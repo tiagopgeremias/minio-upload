@@ -1,0 +1,15 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+Flask = "==1.1.1"
+boto3 = "==1.10.28"
+gunicorn = "==19.9.0"
+
+[dev-packages]
+black = "*"
+
+[pipenv]
+allow_prereleases = true
