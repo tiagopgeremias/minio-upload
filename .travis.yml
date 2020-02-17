@@ -7,10 +7,9 @@ addons:
 install:
   - pipenv --python 3 install --system --deploy
 script:
-  - gunicorn --bind 0.0.0.0:5000 wsgi:app &
-after_success:
   - mkdir build
   - cp -r * build
   - tar -czf package.tgz build
+after_success:
   - export SSHPASS=$DEPLOY_PASS
   - sshpass -e scp -o stricthostkeychecking=no package.tgz $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
