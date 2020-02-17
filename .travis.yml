@@ -9,8 +9,6 @@ script:
   - pwd
 
 after_success:
-  - mkdir build
-  - cp -r * build
-  - tar -czf package.tgz build
+  - tar -czf package.tgz *
   - export SSHPASS=$DEPLOY_PASS
   - sshpass -e scp -o stricthostkeychecking=no package.tgz $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
