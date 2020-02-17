@@ -1,5 +1,9 @@
 language: python
 python: "3.6"
+addons:
+  apt:
+    packages:
+      - sshpass
 install:
   - pipenv --python 3 install --system --deploy
 script:
