@@ -1,1 +1,4 @@
 language: python
+python: "3.6"
+install:
+  - pipenv --python 3 install --system --deploy
