@@ -6,6 +6,7 @@ addons:
       - sshpass
 script:
   - pipenv --python 3 install --system --deploy
+  - pwd
 
 after_success:
   - mkdir build
