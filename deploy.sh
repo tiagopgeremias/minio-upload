@@ -14,7 +14,7 @@
 if [ $(whoami) != "root" ];
 then
   echo "Erro ao executar o deploy."
-  echo "Execute: sudo $0/deploy.sh"
+  echo "Execute: sudo $0"
   exit 1
 fi
 
