@@ -4,8 +4,9 @@ addons:
   apt:
     packages:
       - sshpass
-install:
+script:
   - pipenv --python 3 install --system --deploy
+
 after_success:
   - mkdir build
   - cp -r * build
