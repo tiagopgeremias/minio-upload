@@ -15,4 +15,4 @@ after_success:
   - sshpass -e ssh -o stricthostkeychecking=no $DEPLOY_USER@$DEPLOY_HOST sudo tar -C $DEPLOY_PATH -xzf /tmp/package.tgz
   - sshpass -e ssh -o stricthostkeychecking=no $DEPLOY_USER@$DEPLOY_HOST sudo chmod +x $DEPLOY_PATH/deploy.sh
   - sshpass -e ssh -o stricthostkeychecking=no $DEPLOY_USER@$DEPLOY_HOST sudo chmod +x $DEPLOY_PATH/deploy.sh
-  - sshpass -e ssh -o stricthostkeychecking=no $DEPLOY_USER@$DEPLOY_HOST sudo $DEPLOY_PATH/./deploy.sh &
+  - sshpass -e ssh -o stricthostkeychecking=no $DEPLOY_USER@$DEPLOY_HOST sudo $DEPLOY_PATH/./deploy.sh
