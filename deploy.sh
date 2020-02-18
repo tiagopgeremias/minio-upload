@@ -38,7 +38,7 @@ echo "Instalando dependencias do projeto"
 pipenv --python 3 install --system --deploy
 
 echo "Iniciando a aplicação"
-gunicorn --chdir $(pwd) --bind 0.0.0.0:5000 wsgi:app &
+gunicorn --chdir $(pwd) --bind 0.0.0.0:5000 wsgi:app --daemon
 
 echo "Deploy finalizado com sucesso."
 
