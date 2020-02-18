@@ -31,7 +31,7 @@ fi
 echo "Finalizando o processo do gunicorn"
 if [ $(ps -ef | grep gunicorn | grep -v grep | wc -l) -gt 0 ];
 then
-  kill $(ps -ef | grep gunicorn | grep -v grep) >> /dev/null
+  kill -9 $(ps -ef | grep gunicorn | grep -v grep | awk '{print $2}')
 fi
 
 echo "Instalando dependencias do projeto"
