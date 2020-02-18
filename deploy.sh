@@ -15,6 +15,9 @@ then
   echo "Execute: sudo $0"
   exit 1
 fi
+
+cd /opt/minio-upload
+
 echo "Carregando o arquivo de Environment"
 test -f .env && source .env || echo "Arquivo de .env nao encontrado" && exit 1
 
