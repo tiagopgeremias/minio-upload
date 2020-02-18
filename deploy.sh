@@ -7,9 +7,7 @@
 # <https://github.com/tiagopgeremias>  
 # <tiagopgeremias@gmail.com>
 #
-# 
-#
-#
+
 
 if [ $(whoami) != "root" ];
 then
@@ -17,12 +15,20 @@ then
   echo "Execute: sudo $0"
   exit 1
 fi
+echo "Carregando o arquivo de Environment"
+test -f .env && source .env || echo "Arquivo de .env nao encontrado" && exit 1
 
-# Finalizando o processo do Gunicorn
+echo "Finalizando o processo do gunicorn"
 if [ $(ps -ef | grep gunicorn | grep -v grep | wc -l) -gt 0 ];
 then
   kill -9 $(ps -ef | grep gunicorn | grep -v grep)
 fi
+
+echo "Instalando dependencias do projeto"
+pipenv --python 3 install --system --deploy
+
+echo "Iniciando a aplicação"
+gunicorn --chdir $(pwd) --bind 0.0.0.0:5000 wsgi:app &
 
 echo "Deploy finalizado com sucesso."
 
