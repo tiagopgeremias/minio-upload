@@ -25,6 +25,8 @@ then
   echo "Arquivo Environment carregado"
 else
   echo "Arquivo de .env nao encontrado"
+  echo " => Execute o playbook de provisionamento"
+  echo "https://github.com/tiagopgeremias/provising-minio-app"
   exit 1
 fi
 
