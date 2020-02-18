@@ -19,7 +19,14 @@ fi
 cd /opt/minio-upload
 
 echo "Carregando o arquivo de Environment"
-test -f .env && source .env || echo "Arquivo de .env nao encontrado" && exit 1
+if [ -f .env ];
+then
+  source .env
+  echo "Arquivo Environment carregado"
+else
+  echo "Arquivo de .env nao encontrado"
+  exit 1
+fi
 
 echo "Finalizando o processo do gunicorn"
 if [ $(ps -ef | grep gunicorn | grep -v grep | wc -l) -gt 0 ];
