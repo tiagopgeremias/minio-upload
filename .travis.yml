@@ -11,8 +11,8 @@ script:
 after_success:
   - tar -czf package.tgz *
   - export SSHPASS=$DEPLOY_PASS
-  - sshpass -e ssh -o stricthostkeychecking=no $DEPLOY_USER@$DEPLOY_HOST 'mkdir /tmp/minio-upload'
-  - sshpass -e scp -o stricthostkeychecking=no package.tgz $DEPLOY_USER@$DEPLOY_HOST:/tmp/minio-upload/
-  - sshpass -e ssh -o stricthostkeychecking=no $DEPLOY_USER@$DEPLOY_HOST sudo tar -C $DEPLOY_PATH -xzf package.tgz
+  - sshpass -e scp -o stricthostkeychecking=no package.tgz $DEPLOY_USER@$DEPLOY_HOST:/tmp/
+  - sshpass -e ssh -o stricthostkeychecking=no $DEPLOY_USER@$DEPLOY_HOST sudo tar -C $DEPLOY_PATH -xzf /tmp/package.tgz
+  - sshpass -e ssh -o stricthostkeychecking=no $DEPLOY_USER@$DEPLOY_HOST sudo chmod +x $DEPLOY_PATH/deploy.sh
   - sshpass -e ssh -o stricthostkeychecking=no $DEPLOY_USER@$DEPLOY_HOST sudo chmod +x $DEPLOY_PATH/deploy.sh
   - sshpass -e ssh -o stricthostkeychecking=no $DEPLOY_USER@$DEPLOY_HOST sudo $DEPLOY_PATH/./deploy.sh
